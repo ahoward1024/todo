@@ -4,6 +4,7 @@ body {
   font-size: 20px;
 }
 
+/* Custom CSS style elements to create the unique checkboxes */
 input[type=checkbox].styled-checkbox {
   position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
 }

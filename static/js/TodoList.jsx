@@ -1,7 +1,8 @@
 import React from "react"
 import ReactDOM from "react-dom"
 
-export default class TodoApp extends React.Component {
+// The Todo application element
+export default class Todo extends React.Component {
   constructor(props) {
     super(props);
     this.state = { items: [], text: '' };
@@ -51,6 +52,7 @@ export default class TodoApp extends React.Component {
   }
 }
 
+// A list of todo checkbox elements that use custom css checkboxes
 class TodoList extends React.Component {
   render() {
     return (
