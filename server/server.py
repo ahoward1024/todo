@@ -1,16 +1,20 @@
-from flask import Flask, render_template, jsonify, request
-from pymongo import MongoClient
+from flask import Flask, render_template, request
+from flask_mongoalchemy import MongoAlchemy
 
 app = Flask (__name__, static_folder="../static/build", template_folder="../static")
+# app.config['MONGOALCHEMY_DATABASE'] = 'todo_db'
 
-client = MongoClient('mongodb://localhost:27017/')
-database = client.todo_database
-collection = database.todo_collection
+# db = MongoAlchemy(app)
 
-@app.route("/")
+"""
+class Todo(db.Document):
+  text = db.StringField()
+  completed = db.Boolean()
+"""
+
+@app.route('/')
 def index():
-  todo_list = collection.find()
-  return render_template("index.html", content=todo_list)
+  return render_template("index.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
