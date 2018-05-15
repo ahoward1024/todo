@@ -10,7 +10,7 @@ import CheckboxCheckAll from "./CheckboxCheckAll"
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { list: [], text: '', checkall: false};
+    this.state = {list: [], text: '', checkall: false};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.toggleCheckbox = this.toggleCheckbox.bind(this);
@@ -80,7 +80,7 @@ export default class App extends React.Component {
 
   // Updates the state object's text member to the string in the text field
   handleChange(e) {
-    this.setState({ text: e.target.value });
+    this.setState({text: e.target.value});
   }
 
   // Creates a new object to insert into the state's list object. Only does so if the length of

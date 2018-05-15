@@ -10,8 +10,8 @@ CSS Checkboxes - http://www.csscheckbox.com/checkbox/42696/very-light-blue/
 Aaron Batilo - https://github.com/abatilo/coloradogeekjobs  
 ReactJS - https://reactjs.org/ for the TODO application example  
 React Tips - http://react.tips/checkboxes-in-react/  
-CoolBoi567's Example - https://github.com/CoolBoi567/To-Do-List---Flask-MongoDB-Example
-MongoDB Python tutorial - http://api.mongodb.com/python/current/tutorial.html#tutorial
+CoolBoi567's Example - https://github.com/CoolBoi567/To-Do-List---Flask-MongoDB-Example  
+MongoDB Python tutorial - http://api.mongodb.com/python/current/tutorial.html#tutorial  
 
 ## Building/Running
 **Flask**
