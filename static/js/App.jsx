@@ -23,11 +23,18 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <h3 align="center"> todo </h3>
+        <h1 className="styled-header" align="center"> todo </h1>
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor="new-todo">What needs to be done?&nbsp;</label>
-          <input id="new-todo" onChange={this.handleChange} value={this.state.text}/>
-          <button>Add #{this.state.list.length + 1}</button>
+          <input
+            className="styled-input"
+            id="new-todo"
+            placeholder="What needs to be done?"
+            onChange={this.handleChange}
+            value={this.state.text}
+          />&nbsp;
+          <button className="styled-button">
+            Add #{this.state.list.length + 1}
+          </button>
         </form>
         <CheckboxCheckAll
           list={this.state.list}

@@ -1,24 +1,56 @@
 body {
   background: #eaeaea;
   font-family: "Source Sans Pro", sans-serif;
-  font-size: 20px;
+  font-size: 30px;
+}
+
+.styled-header {
+  font-size: 75px;
+}
+
+.styled-button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-family: "Source Sans Pro", sans-serif;
+  border-radius: 4px;
+  font-size: 30px;
+}
+
+input:not([type=checkbox]).styled-input {
+  border: none;
+  text-indent: 5px;
+  font-family: "Source Sans Pro", sans-serif;
+  border-radius: 4px;
+  font-size: 30px;
 }
 
 /* Custom CSS style elements to create the unique checkboxes */
 input[type=checkbox].styled-checkbox {
-  position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+  position: absolute;
+  z-index: -1000;
+  left: -1000px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
 }
 
 input[type=checkbox].styled-checkbox + label.styled-checkbox-label {
-  padding-left:25px;
-  height:20px; 
-  display:inline-block;
-  line-height:20px;
-  background-repeat:no-repeat;
+  padding-left: 25px;
+  height: 20px; 
+  display: inline-block;
+  line-height: 20px;
+  background-repeat: no-repeat;
   background-position: 0 0;
-  font-size:20px;
-  vertical-align:middle;
-  cursor:pointer;
+  vertical-align: middle;
+  cursor: pointer;
 }
 
 input[type=checkbox].styled-checkbox:checked + label.styled-checkbox-label {
@@ -26,7 +58,7 @@ input[type=checkbox].styled-checkbox:checked + label.styled-checkbox-label {
 }
 
 label.styled-checkbox-label {
-  background-image:url(../images/checkboxes.png);
+  background-image: url(../images/checkboxes.png);
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
