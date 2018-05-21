@@ -25,32 +25,28 @@ Simply install MongoDB for your platform.
 
 ## Python
 First you should set up a virtual environment. I personally used venv.
-To set up for the first time use `python -m venv /venv`.
+To set up for the first time use `python -m venv /venv`
 
 The server runs on the Flask micro framework. After setting up the virtual environment, install
-Flask with `pip install Flask`.
+Flask with `pip install Flask`
 
 ## NPM
 Dowload and install NPM on your machine. Then run `npm install --save` to download all dependencies.
 
 # Building
-Please see the SETUP.md file when creating the project for the first time. Afterwards, use the 
-following instructions to build the project.
 
-## Flask
+## Server
 `cd backend/`
 
 Set up the virtual environment and register the environment variables with the begin scripts:  
-
-_Windows_: Run `begin.bat`  
-_Linux_: Run `./begin.sh`  
-
+Windows: Run `begin.bat`  
+Linux: Run `./begin.sh`  
 Now run the server with `flask run` to make sure it works. 
 
-## npm
+## Frontend
 `cd frontend/`  
 
-Build the project with `npm run build`
+Build the project with `npm run build`  
 Finally run the frontend with `npm run start`  
 
 # Running the app!
@@ -58,4 +54,4 @@ Finally run the frontend with `npm run start`
 - Run `flask run` from the backend folder
 - Run `npm run start` fromt the frontend folder
 
-`npm run start` should open a browser window to `localhost:3000` where you can see the client in action!
+`npm run start` should open a browser window to [http://localhost:3000](http://localhost:3000) where you can see the client in action!
