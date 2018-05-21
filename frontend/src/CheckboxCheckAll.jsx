@@ -1,5 +1,4 @@
 import React from "react"
-import ReactDOM from "react-dom"
 
 /*
   This component renders out a checkbox that the user can use to check or uncheck all of the

@@ -58,7 +58,7 @@ input[type=checkbox].styled-checkbox:checked + label.styled-checkbox-label {
 }
 
 label.styled-checkbox-label {
-  background-image: url(../images/checkboxes.png);
+  background-image: url(/checkboxes.png);
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;

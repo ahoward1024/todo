@@ -1,9 +1,9 @@
-# TODO
+#TODO
 
 A simple todo list written as an exercise in full stack development.
 Written with Node.js modules, React.js, and Flask.
 
-## Thanks to:
+##Thanks to:
 Angela Juvet Branaes - https://github.com/angineering/FullStackTemplate  
 SO - https://stackoverflow.com/questions/4148499/how-to-style-a-checkbox-using-css#4148544  
 CSS Checkboxes - http://www.csscheckbox.com/checkbox/42696/very-light-blue/  
@@ -13,51 +13,49 @@ React Tips - http://react.tips/checkboxes-in-react/
 CoolBoi567's Example - https://github.com/CoolBoi567/To-Do-List---Flask-MongoDB-Example  
 MongoDB Python tutorial - http://api.mongodb.com/python/current/tutorial.html#tutorial  
 
-## Building/Running
-**Flask**
-```
-cd server/
-```
-To run the flask server, first ensure that both python, pip, and venv are installed on your machine. Then, set up the virtual environment.
-```
-python -m venv venv/
-```
-Install flask:
-```
-pip install Flask
-```
-_Windows_:
-  ```bat
-  set FLASK_APP=server.py
-  set FLASK_ENV=development (development only)
-  flask run
-  ```
-  _Linux_:
-  ```bash
-  . venv/Scripts/activate
-  export FLASK_APP=server.py
-  export FLASK_ENV=development (development only)
-  flask run
-  ```
+#Initial setup
 
-To start development again after everything has been closed, make sure to re-run the virtual environment:
-```
-venv/Scripts/activate.bat
-```
+You will need three things to run the todo app:
+- Python
+- NPM
+- MongoDB
 
+## MongoDB (currently unused!!)
+Simply install MongoDB for your platform.
 
-**npm**
-```
-cd static/
-```
-Download and install npm on your machine.  
-Run ```npm install --save-dev```  
-Finally you can build, build development (debug), or run a continuous build with the respective commands:
-```
-npm run build
-npm run build-dev
-npm run watch
-```
+## Python
+First you should set up a virtual environment. I personally used venv.
+To set up for the first time use `python -m venv /venv`.
 
-**Lastly**  
-Navigate to [localhost:5000](localhost:5000) to see the website in action!
+The server runs on the Flask micro framework. After setting up the virtual environment, install
+Flask with `pip install Flask`.
+
+## NPM
+Dowload and install NPM on your machine. Then run `npm install --save` to download all dependencies.
+
+#Building
+Please see the SETUP.md file when creating the project for the first time. Afterwards, use the 
+following instructions to build the project.
+
+##Flask
+`cd backend/`
+
+Set up the virtual environment and register the environment variables with the begin scripts:  
+
+_Windows_: Run `begin.bat`  
+_Linux_: Run `./begin.sh`  
+
+Now run the server with `flask run` to make sure it works. 
+
+##npm
+`cd frontend/`  
+
+Build the project with `npm run build`
+Finally run the frontend with `npm run start`  
+
+# Running the app!
+- Run your MongoDB instance with `mongod --dbpath <path_to_project>/data/db` to start the database.
+- Run `flask run` from the backend folder
+- Run `npm run start` fromt the frontend folder
+
+`npm run start` should open a browser window to `localhost:3000` where you can see the client in action!

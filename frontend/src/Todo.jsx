@@ -1,5 +1,4 @@
 import React from "react"
-import ReactDOM from "react"
 
 /*
   This is a 'todo' element. All of the state of the application is stored in the application's
@@ -28,6 +27,6 @@ export default class Todo extends React.Component {
   }
 
   handleChange(e) {
-    this.props.toggleCheckboxCallback(e.target.id);
+    this.props.toggleCheckbox(e.target.id);
   }
 }

@@ -1,5 +1,4 @@
 import React from "react"
-import ReactDOM from "react-dom"
 import Todo from "./Todo"
 import CheckboxCheckAll from "./CheckboxCheckAll"
 
@@ -50,7 +49,7 @@ export default class App extends React.Component {
               text={item.text}
               id={item.id}
               done={item.done}
-              toggleCheckboxCallback={this.toggleCheckbox}
+              toggleCheckbox={this.toggleCheckbox}
             />
           ))
         }
@@ -62,12 +61,15 @@ export default class App extends React.Component {
   // NOTE: Is this going to be too slow? We have to iterate over potentially the entire list
   // just to check and uncheck each box.
   toggleCheckbox(id, value) {
-    for(var i = 0; i < this.state.list.length; i++) {
+    var i = 0;
+    for(; i < this.state.list.length; i++) {
+      // The browser will complain about this. It wants to evaluate using the identity operator (===)
+      // but this produces an _incorrect_ result. ¯\_(ツ)_/¯
       if(this.state.list[i].id == id) {
-       // https://stackoverflow.com/questions/29537299/react-how-do-i-update-state-item1-on-setstate-with-jsfiddle#38378350
-       this.state.list[i].done = !this.state.list[i].done;
-       this.forceUpdate();
-       break; // Optimization
+        // https://stackoverflow.com/questions/29537299/react-how-do-i-update-state-item1-on-setstate-with-jsfiddle#38378350
+        this.state.list[i].done = !(this.state.list[i].done);
+        this.forceUpdate();
+        break; // Optimization
       }
     }
   }
