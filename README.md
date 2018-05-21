@@ -1,9 +1,9 @@
-#TODO
+# TODO
 
 A simple todo list written as an exercise in full stack development.
 Written with Node.js modules, React.js, and Flask.
 
-##Thanks to:
+## Thanks to:
 Angela Juvet Branaes - https://github.com/angineering/FullStackTemplate  
 SO - https://stackoverflow.com/questions/4148499/how-to-style-a-checkbox-using-css#4148544  
 CSS Checkboxes - http://www.csscheckbox.com/checkbox/42696/very-light-blue/  
@@ -13,7 +13,7 @@ React Tips - http://react.tips/checkboxes-in-react/
 CoolBoi567's Example - https://github.com/CoolBoi567/To-Do-List---Flask-MongoDB-Example  
 MongoDB Python tutorial - http://api.mongodb.com/python/current/tutorial.html#tutorial  
 
-#Initial setup
+# Initial setup
 
 You will need three things to run the todo app:
 - Python
@@ -33,11 +33,11 @@ Flask with `pip install Flask`.
 ## NPM
 Dowload and install NPM on your machine. Then run `npm install --save` to download all dependencies.
 
-#Building
+# Building
 Please see the SETUP.md file when creating the project for the first time. Afterwards, use the 
 following instructions to build the project.
 
-##Flask
+## Flask
 `cd backend/`
 
 Set up the virtual environment and register the environment variables with the begin scripts:  
@@ -47,7 +47,7 @@ _Linux_: Run `./begin.sh`
 
 Now run the server with `flask run` to make sure it works. 
 
-##npm
+## npm
 `cd frontend/`  
 
 Build the project with `npm run build`
