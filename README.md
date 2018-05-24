@@ -52,6 +52,6 @@ Finally run the frontend with `npm run start`
 # Running the app!
 - Run your MongoDB instance with `mongod --dbpath <path_to_project>/data/db` to start the database.
 - Run `flask run` from the backend folder
-- Run `npm run start` fromt the frontend folder
+- Run `npm run start` from the frontend folder
 
 `npm run start` should open a browser window to [http://localhost:3000](http://localhost:3000) where you can see the client in action!

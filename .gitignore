@@ -14,9 +14,5 @@ frontend/build/
 # MongoDB local instance
 data/
 
-# Lock files
-yarn.lock
-package-lock.json
-
 # Logs
 *.log
