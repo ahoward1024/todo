@@ -16,22 +16,29 @@ export default class App extends React.Component {
     this.toggleAllCheckboxes = this.toggleAllCheckboxes.bind(this);
   }
 
+  componentDidMount() {
+    fetch('http://localhost:5000/get')
+      .then(respone => respone.json())
+      .then(list => this.setState({ list }));
+  }
+
   // Renders the full application. A 'todo' header, an input box form with a submit button,
   // a 'check all' checkbox that checks or unchecks all checkboxes in the state list, and
   // finally the list of todo items.
   render() {
     return (
-      <div>
+      <div className="Animate-in">
         <h1 className="styled-header" align="center"> todo </h1>
         <form onSubmit={this.handleSubmit}>
           <input
             className="styled-input"
+            align="center"
             id="new-todo"
             placeholder="What needs to be done?"
             onChange={this.handleChange}
             value={this.state.text}
           />&nbsp;
-          <button className="styled-button">
+          <button className="styled-button" align="center">
             Add #{this.state.list.length + 1}
           </button>
         </form>

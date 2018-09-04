@@ -1,11 +1,32 @@
 body {
-  background: #eaeaea;
+  background: #222;
   font-family: "Source Sans Pro", sans-serif;
-  font-size: 30px;
+  font-size: 20px;
+  color: white;
+}
+
+.Animate-in {
+  animation: SlideAndFadeIn 0.8s ease-in-out;
+  margin: auto;
+  width: 50%;
+}
+
+@keyframes SlideAndFadeIn {
+  0% {
+    opacity: 0;
+    transform: translate(-100em, 0);
+  }
+  85% {
+    transform: translate(2em, 0);
+  }
+  100% {
+    opacity: 100;
+    transform: translate(0, 0);
+  }
 }
 
 .styled-header {
-  font-size: 75px;
+  font-size: 50px;
 }
 
 .styled-button {
