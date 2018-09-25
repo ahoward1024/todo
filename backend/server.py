@@ -1,14 +1,10 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS
 import db
 import json
 
 app = Flask (__name__)
-cors = CORS(app, resources = {
-            r"/todos*": {
-              "origins": "*"
-            }
-        })
+cors = CORS(app)
 
 @app.route('/get', methods = ['GET'])
 def todos_get():
@@ -23,6 +19,10 @@ def todos_add():
 def todos_complete():
   db.complete_todos(request.json)
   return 'ok', 200
+
+@app.route('/testing', methods = ['GET'])
+def test():
+  return jsonify({'message': '✔️ The server is up! 👌'})
 
 @app.route('/')
 def index():

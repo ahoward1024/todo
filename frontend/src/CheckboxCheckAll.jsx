@@ -1,17 +1,17 @@
-import React from "react"
+import React from 'react';
+import PropTypes from 'prop-types';
 
-/*
-  This component renders out a checkbox that the user can use to check or uncheck all of the
-  todo items at once.
-*/
-export default class CheckboxCheckAll extends React.Component {
+// This component renders out a checkbox that the user can use to check or
+// uncheck all of thetodo items at once.
+
+class CheckboxCheckAll extends React.Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
   }
 
   render() {
-    return(
+    return (
       <div>
         <input
           type="checkbox"
@@ -26,7 +26,14 @@ export default class CheckboxCheckAll extends React.Component {
     );
   }
 
-  handleChange(e) {
-    this.props.toggleAllCheckboxes(e.target.checked);
+  handleChange(event) {
+    this.props.toggleAllCheckboxes(event.target.checked);
   }
 }
+
+CheckboxCheckAll.propTypes = {
+  'checked': PropTypes.bool,
+  'toggleAllCheckboxes': PropTypes.func
+};
+
+export default CheckboxCheckAll;
