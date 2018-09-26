@@ -1,6 +1,7 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import TodoList from './TodoList';
+import indexRedux from './Redux/indexRedux';
 import HealthCheck from './HealthCheck';
 
 function Home() {
@@ -42,6 +43,7 @@ function RouteApp() {
           <Link className="HeaderItem" to="/">Home</Link>
           <Link className="HeaderItem" to="/about">About</Link>
           <Link className="HeaderItem" to="/todo">Todo</Link>
+          <Link className="HeaderItem" to="/todoredux">Todo Redux</Link>
           <Link className="HeaderItem" to="/healthcheck">Health Check</Link>
         </div>
 
@@ -49,8 +51,9 @@ function RouteApp() {
 
         <div align="center">
           <Route exact path="/" component={Home}/>
-          <Route exact path="/todo" component={TodoList}/>
           <Route exact path="/about" component={About}/>
+          <Route exact path="/todo" component={TodoList}/>
+          <Route exact path="/todoredux" component={indexRedux}/>
           <Route exact path="/healthcheck" component={HealthCheck}/>
         </div>
 

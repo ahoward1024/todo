@@ -21,7 +21,10 @@ class Todo extends React.Component {
           id={this.props.id}
           checked={this.props.done}
           onChange={this.handleChange}
-        /> {this.props.text}
+        />
+        <label
+          style={{'textDecoration': this.props.done ? 'line-through' : 'none'}}
+        >{this.props.text}</label>
       </div>
     );
   }

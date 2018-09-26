@@ -1,22 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
-class HealthCheckMessage extends React.Component {
-  render() {
-    return (
-      <div>
-        <p className={this.props.animation}>{this.props.message}</p>
-      </div>
-    );
-  }
-}
-
-HealthCheckMessage.propTypes = {
-  'animation': PropTypes.string,
-  'message': PropTypes.string
-};
 
 class HealthCheck extends React.Component {
+  // We need to cancel the asyncronous task if the component is being
+  // unmounted otherwise this is a memory leak.
+  // Warning: Can't call setState (or forceUpdate) on an unmounted component.
+  // This is a no-op, but it indicates a memory leak in your application.
+  // To fix, cancel all subscriptions and asynchronous tasks in the
+  // componentWillUnmount method.
+  // https://stackoverflow.com/questions/50428842/cant-call-setstate-or-forceupdate-on-an-unmounted-component
+  isCancelled = false;
+
   constructor(props) {
     super(props);
     this.state = {'message': 'Checking...'};
@@ -41,40 +34,21 @@ class HealthCheck extends React.Component {
 
   componentDidMount() {
     return HealthCheck.getResponse().then(message => {
-      if (message !== undefined) {
+      if (!this.isCancelled && message !== undefined) {
         this.setState({message});
       }
     });
   }
 
   componentWillUnmount() {
-    this.setState({'message': 'Checking...'});
+    this.isCancelled = true;
   }
 
   render() {
-    const messageElement = [];
-    if (this.state.message === '✔️ The server is up! 👌') {
-      messageElement.push(
-        <HealthCheckMessage
-          animation="Server-Message-Success"
-          message={this.state.message}
-        />
-      );
-    } else if (this.state.message === 'Checking...') {
-      messageElement.push(<p>{this.state.message}</p>);
-    } else {
-      messageElement.push(
-        <HealthCheckMessage
-          animation="Server-Message-Error"
-          message={this.state.message}
-        />
-      );
-    }
-
     return (
       <div align="center">
         <h1 className="H1-Animation">Health Check</h1>
-        {messageElement}
+        <p className="Server-Message-Animation">{this.state.message}</p>
       </div>
     );
   }

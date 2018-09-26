@@ -26,7 +26,7 @@ class TodoList extends React.Component {
   render() {
     return (
       <div>
-        <h1 className="H1-Animation">todo</h1>
+        <h1 className="H1-Animation">Todo</h1>
         <div className="AddTodo">
           <input
             className="AddTodoInput"

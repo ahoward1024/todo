@@ -75,14 +75,10 @@ a:active {
   animation: SlideDownAndFadeIn 0.3s ease-in-out;
 }
 
-.Server-Message-Success {
-  color: green;
-  animation: SlideDownAndFadeInDelayed 0.8s ease-in-out;
-}
-
-.Server-Message-Error {
-  color: red;
-  animation: SlideDownAndFadeIn 0.8s ease-in-out;
+.Server-Message-Animation {
+  animation: SlideFromLeftAndFadeIn 0.8s ease-in-out;
+  text-align: center;
+  width: 75%;
 }
 
 @keyframes SlideFromLeftAndFadeIn {
@@ -121,5 +117,3 @@ a:active {
     transform: translate(0, 0);
   }
 }
-
-/*# sourceMappingURL=index.css.map */
