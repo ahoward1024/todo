@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {toggleAll} from './ActionsRedux';
 
 function mapStateToProps(state) {
-  return {'checked': state.ReducerRedux.checkall};
+  return {'checked': state.checkall};
 }
 
 function CheckAllRedux({dispatch, checked}) {

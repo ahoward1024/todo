@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import {toggleTodo} from './ActionsRedux';
 
 function mapStateToProps(state) {
-  return {'todos': state.ReducerRedux.todos};
+  return {'todos': state.todos};
 }
 
 function mapDispatchToProps(dispatch) {

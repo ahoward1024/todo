@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import TodoList from './TodoList';
 import indexRedux from './Redux/indexRedux';
 import HealthCheck from './HealthCheck';
+import DropDatabase from './DropDatabase';
 
 function Home() {
   return (
@@ -45,6 +46,7 @@ function RouteApp() {
           <Link className="HeaderItem" to="/todo">Todo</Link>
           <Link className="HeaderItem" to="/todoredux">Todo Redux</Link>
           <Link className="HeaderItem" to="/healthcheck">Health Check</Link>
+          <Link className="HeaderItem" to="/dropdatabase">Drop DB</Link>
         </div>
 
         <hr/>
@@ -55,6 +57,7 @@ function RouteApp() {
           <Route exact path="/todo" component={TodoList}/>
           <Route exact path="/todoredux" component={indexRedux}/>
           <Route exact path="/healthcheck" component={HealthCheck}/>
+          <Route exact path="/dropdatabase" component={DropDatabase}/>
         </div>
 
       </div>

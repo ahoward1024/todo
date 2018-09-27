@@ -1,4 +1,5 @@
 import {ADD_TODO, TOGGLE_TODO, TOGGLE_ALL} from './ActionsRedux';
+import {sendNewTodo, sendToggleTodo} from './ServerRedux';
 
 const initialState = {
   'checkall': false,
@@ -11,11 +12,12 @@ function ReducerRedux(state = initialState, action) {
   const todos = [...state.todos];
   switch (action.type) {
     case ADD_TODO:
-      todos.push({
+      const newTodo = {
         'id': action.id,
         'text': action.text,
         'completed': false
-      });
+      };
+      todos.push(newTodo);
 
       return {
         'checkall': false,
