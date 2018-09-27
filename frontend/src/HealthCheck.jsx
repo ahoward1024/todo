@@ -1,5 +1,8 @@
 import React from 'react';
 
+const URL = 'http://localhost:5000/healthcheck';
+const successMessage = '✔️ The server is up! 👌';
+
 class HealthCheck extends React.Component {
   // We need to cancel the asyncronous task if the component is being
   // unmounted otherwise this is a memory leak.
@@ -13,31 +16,28 @@ class HealthCheck extends React.Component {
   constructor(props) {
     super(props);
     this.state = {'message': 'Checking...'};
+    this.getResponse = this.getResponse.bind(this);
   }
 
-  static async getResponse() {
-    const url = 'http://localhost:5000/testing';
-    let message = '';
+  async getResponse() {
+    let message = 'Checking...';
     try {
-      const response = await fetch(url, {'method': 'GET'});
-      console.log(response);
-      const json = await response.json();
-      console.log(json);
-      message = await json.message;
+      const response = await fetch(URL, {'method': 'GET'});
+      const status = await response.status;
+      if (!this.isCancelled && status === 200) {
+        message = successMessage;
+      }
     } catch (exception) {
-      console.log(`Error ${exception}`);
-      message = `❌ server error${exception}`;
+      console.log(`Health Check Fail: ${exception}`);
+      message = 'Error: '.concat(exception.toString());
     }
-
-    return message;
+    if (!this.isCancelled) {
+      this.setState({message});
+    }
   }
 
   componentDidMount() {
-    return HealthCheck.getResponse().then(message => {
-      if (!this.isCancelled && message !== undefined) {
-        this.setState({message});
-      }
-    });
+    this.getResponse();
   }
 
   componentWillUnmount() {
@@ -45,10 +45,20 @@ class HealthCheck extends React.Component {
   }
 
   render() {
+    const style = {'color': 'white'};
+    if (this.state.message === successMessage) {
+      style.color = 'green';
+    } else if (this.state.message.includes('Error')) {
+      style.color = 'red';
+    }
+
     return (
       <div align="center">
         <h1 className="H1-Animation">Health Check</h1>
-        <p className="Server-Message-Animation">{this.state.message}</p>
+        <p
+          className="Server-Message-Animation"
+          style={style}
+        >{this.state.message}</p>
       </div>
     );
   }

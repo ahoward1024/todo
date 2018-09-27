@@ -4,25 +4,40 @@ import db
 import json
 
 app = Flask (__name__)
-cors = CORS(app)
+cors = CORS(app, resources = {
+  r"/todos*": {
+    "origins": "*"
+  },
+  r"/dropdatabase": {
+    "origins": "*"
+  },
+  r"/healthcheck": {
+    "origins": "*"
+  }
+})
 
-@app.route('/get', methods = ['GET'])
+@app.route('/todos.get', methods = ['GET'])
 def todos_get():
   return json.dumps(db.get_todos())
 
-@app.route('/add', methods = ['POST'])
-def todos_add():
-  db.add_todos(request.json)
+@app.route('/todos.add', methods = ['POST'])
+def todo_add():
+  db.add_todo(request.json)
   return 'ok', 201
 
-@app.route('/complete', methods = ['PUT'])
-def todos_complete():
-  db.complete_todos(request.json)
+@app.route('/todos.toggle', methods = ['PUT'])
+def todo_toggle():
+  db.toggle_todo(request.json)
   return 'ok', 200
 
-@app.route('/testing', methods = ['GET'])
+@app.route('/healthcheck', methods = ['GET'])
 def test():
-  return jsonify({'message': '✔️ The server is up! 👌'})
+  return 'ok', 200
+
+@app.route('/dropdatabase', methods = ['GET'])
+def drop_database():
+  db.drop_db()
+  return 'ok', 200
 
 @app.route('/')
 def index():

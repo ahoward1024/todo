@@ -16,12 +16,13 @@ def get_todos():
     todos += [todo]
   return todos
 
-def add_todos(dict):
-  dict['id'] = collection.count()
-  dict['complete'] = False
+def add_todo(dict):
   collection.insert_one(dict)
 
-def complete_todos(dict):
+def toggle_todo(dict):
   complete = 'true' == dict['complete'].lower()
   id = int(dict['id'])
-  collection.update_one({'id' : id}, {'$set': {'complete': complete}})
+  collection.update_one(dict)
+
+def drop_db():
+  client.drop_database(db);
