@@ -1,5 +1,6 @@
   const urlAdd = 'http://localhost:5000/todos.add';
   const urlToggle = 'http://localhost:5000/todos.toggle';
+  const urlToggleAll = 'http://localhost:5000/todos.toggleall';
 
  export async function sendNewTodo(todo) {
   try {
@@ -29,6 +30,22 @@ export async function sendToggleTodo(id, completed) {
         id,
         completed
       })
+    });
+    console.log(response);
+  } catch (exception) {
+    console.log(`Error: ${exception}`);
+  }
+}
+
+export async function sendToggleAll(completed) {
+  try {
+    const response = await fetch(urlToggleAll, {
+      'method': 'PUT',
+      'headers': {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      'body': JSON.stringify({completed})
     });
     console.log(response);
   } catch (exception) {

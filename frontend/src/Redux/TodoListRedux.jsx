@@ -18,7 +18,9 @@ function TodoListRedux({todos, toggle}) {
     {todos.map(todo =>
       <TodoRedux
           key={todo.id}
-          {...todo}
+          id={todo.id}
+          text={todo.text}
+          completed={todo.completed}
           onClick={() => toggle(todo.id)}
         />
       )}

@@ -1,5 +1,4 @@
 import constants
-import os
 
 db = {
   constants.MONGO_HOST: 'localhost',

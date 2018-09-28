@@ -1,5 +1,5 @@
 import {ADD_TODO, TOGGLE_TODO, TOGGLE_ALL} from './ActionsRedux';
-import {sendNewTodo, sendToggleTodo} from './ServerRedux';
+import {sendNewTodo, sendToggleTodo, sendToggleAll} from './ServerRedux';
 
 const initialState = {
   'checkall': false,
@@ -12,12 +12,15 @@ function ReducerRedux(state = initialState, action) {
   const todos = [...state.todos];
   switch (action.type) {
     case ADD_TODO:
+      const id = Date.now();
       const newTodo = {
-        'id': action.id,
+        id,
         'text': action.text,
         'completed': false
       };
       todos.push(newTodo);
+
+      sendNewTodo(newTodo);
 
       return {
         'checkall': false,
@@ -27,10 +30,13 @@ function ReducerRedux(state = initialState, action) {
       return {
         checkall,
         'todos': todos.map(todo => {
+          const newCompleted = !todo.completed;
           if (todo.id === action.id) {
+            sendToggleTodo(todo.id, newCompleted);
+
             return {
               ...todo,
-              'completed': !todo.completed
+              'completed': newCompleted
             };
           }
 
@@ -38,6 +44,8 @@ function ReducerRedux(state = initialState, action) {
         })
       };
     case TOGGLE_ALL:
+    sendToggleAll(!checkall);
+
       return {
         'checkall': !checkall,
         'todos': todos.map(todo => {

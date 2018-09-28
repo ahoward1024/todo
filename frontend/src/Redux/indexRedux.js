@@ -10,18 +10,21 @@ const initState = {
 };
 const URL = 'http://localhost:5000/todos.get';
 
-const store = createStore(ReducerRedux, initState);
+let store = null;
 
 class indexRedux extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {'db': ''};
+    this.state = {'message': ''};
   }
 
   static async getStateFromServer(url) {
     try {
       const response = await fetch(url, {'method': 'GET'});
       const json = await response.json();
+      json.forEach(todo => {
+        initState.todos.push(todo.todo);
+      });
       console.log(json);
     } catch (exception) {
       console.log(`Error getting state from server: ${exception}`);
@@ -29,14 +32,23 @@ class indexRedux extends React.Component {
   }
 
   componentDidMount() {
-    indexRedux.getStateFromServer(URL);
+    return indexRedux.getStateFromServer(URL).then(response => {
+      store = createStore(ReducerRedux, initState);
+      this.forceUpdate();
+    });
   }
 
   render() {
+    if (store !== null) {
+      return (
+        <Provider store={store}>
+         <AppRedux />
+        </Provider>
+      );
+    }
+
     return (
-      <Provider store={store}>
-        <AppRedux />
-      </Provider>
+      <p>Loading</p>
     );
   }
 }

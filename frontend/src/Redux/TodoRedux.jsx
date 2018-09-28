@@ -1,16 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function TodoRedux({onClick, completed, text}) {
+function TodoRedux({onClick, completed, text, id}) {
   return (
     <div className="TodoItem-Animate">
       <input
         type="checkbox"
         checked={completed}
         onChange={onClick}
-        style={{'textDecoration': completed ? 'line-through' : 'none'}}
       />
-      <label>
+      <label style={{'textDecoration': completed ? 'line-through' : 'none'}}>
         {text}
       </label>
     </div>
@@ -20,7 +19,8 @@ function TodoRedux({onClick, completed, text}) {
 TodoRedux.propTypes = {
   'onClick': PropTypes.func.isRequired,
   'completed': PropTypes.bool.isRequired,
-  'text': PropTypes.string.isRequired
+  'text': PropTypes.string.isRequired,
+  'id': PropTypes.number.isRequired
 };
 
 export default TodoRedux;
