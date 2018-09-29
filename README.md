@@ -8,15 +8,24 @@ Written with Node.js modules, React.js, and Flask.
 
 ## Thanks to:
 Angela Juvet Branaes - https://github.com/angineering/FullStackTemplate
+
 SO - https://stackoverflow.com/questions/4148499/how-to-style-a-checkbox-using-css#4148544
+
 CSS Checkboxes - http://www.csscheckbox.com/checkbox/42696/very-light-blue/
+
 Aaron Batilo - https://github.com/abatilo/docker-compose-todo
              - https://github.com/abatilo/coloradogeekjobs
+
 ReactJS - https://reactjs.org/ for the TODO application example
+
 React Tips - http://react.tips/checkboxes-in-react/
+
 CoolBoi567's Example - https://github.com/CoolBoi567/To-Do-List---Flask-MongoDB-Example
+
 MongoDB Python tutorial - http://api.mongodb.com/python/current/tutorial.html#tutorial
+
 Ohans Emmanuel - https://medium.freecodecamp.org/understanding-redux-the-worlds-easiest-guide-to-beginning-redux-c695f45546f6
+
 And of course the Redux official examples - https://github.com/reduxjs/redux/tree/master/examples
 
 # Initial setup
