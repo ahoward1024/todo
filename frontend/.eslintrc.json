@@ -95,7 +95,8 @@
     "dot-notation": [
       "error",
       {
-        "allowKeywords": true
+        "allowKeywords": true,
+        "allowPattern": "^[a-z|_]+$"
       }
     ],
     "eol-last": "error",

@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TodoRedux from './TodoRedux';
 import {connect} from 'react-redux';
-import {toggleTodo} from './ActionsRedux';
+import {requestToggleTodo} from './ActionsRedux';
 
 function mapStateToProps(state) {
   return {'todos': state.todos};
 }
 
 function mapDispatchToProps(dispatch) {
-  return {'toggle': id => dispatch(toggleTodo(id))};
+  return {'toggle': (id, completed) => dispatch(requestToggleTodo(id, completed))};
 }
 
 function TodoListRedux({todos, toggle}) {
@@ -21,7 +21,7 @@ function TodoListRedux({todos, toggle}) {
           id={todo.id}
           text={todo.text}
           completed={todo.completed}
-          onClick={() => toggle(todo.id)}
+          onClick={() => toggle(todo.id, !todo.completed)}
         />
       )}
     </div>

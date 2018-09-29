@@ -1,60 +1,66 @@
-import {ADD_TODO, TOGGLE_TODO, TOGGLE_ALL} from './ActionsRedux';
-import {sendNewTodo, sendToggleTodo, sendToggleAll} from './ServerRedux';
+import {
+  SUCCESS_GET_STATE,
+  SUCCESS_ADD_TODO,
+  SUCCESS_TOGGLE_TODO,
+  SUCCESS_TOGGLE_ALL,
+  FAILURE_ACTION
+} from './ActionsRedux';
 
-const initialState = {
-  'checkall': false,
-  'todos': []
-};
-
-function ReducerRedux(state = initialState, action) {
-  // Get the values of the initial state
-  const checkall = state.checkall;
-  const todos = [...state.todos];
+function ReducerRedux(state, action) {
   switch (action.type) {
-    case ADD_TODO:
-      const id = Date.now();
-      const newTodo = {
-        id,
-        'text': action.text,
-        'completed': false
-      };
-      todos.push(newTodo);
+    case SUCCESS_GET_STATE:
+      console.log(action.state);
+      const todos = [];
+      let checkall = state.checkall;
+      action.state.forEach(todo => {
+        if (todo['_id'] === 'checkall') {
+          checkall = todo.checkall;
+        } else {
+          todos.push(todo.todo);
+        }
+      });
 
-      sendNewTodo(newTodo);
-
-      return {
-        'checkall': false,
-        todos
-      };
-    case TOGGLE_TODO:
       return {
         checkall,
-        'todos': todos.map(todo => {
-          const newCompleted = !todo.completed;
-          if (todo.id === action.id) {
-            sendToggleTodo(todo.id, newCompleted);
-
-            return {
-              ...todo,
-              'completed': newCompleted
-            };
-          }
-
-          return todo;
-        })
+        todos
       };
-    case TOGGLE_ALL:
-    sendToggleAll(!checkall);
-
+    case SUCCESS_ADD_TODO:
       return {
-        'checkall': !checkall,
-        'todos': todos.map(todo => {
+        'checkall': state.checkall,
+        'todos': [
+          ...state.todos,
+          action.todo
+        ]
+      };
+    case SUCCESS_TOGGLE_TODO:
+      return {
+        'checkall': state.checkall,
+        'todos': state.todos.map(todo => {
+              if (todo.id === action.id) {
+                return {
+                  ...todo,
+                  'completed': action.completed
+                };
+              }
+
+              return todo;
+            }
+          )
+      };
+    case SUCCESS_TOGGLE_ALL:
+      return {
+        'checkall': action.completed,
+        'todos': state.todos.map(todo => {
           return {
             ...todo,
-            'completed': !checkall
+            'completed': action.completed
           };
         })
       };
+    case FAILURE_ACTION:
+      console.log(action.message);
+
+      return state;
     default:
       return state;
   }

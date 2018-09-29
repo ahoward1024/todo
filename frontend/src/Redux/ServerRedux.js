@@ -1,10 +1,16 @@
-  const urlAdd = 'http://localhost:5000/todos.add';
-  const urlToggle = 'http://localhost:5000/todos.toggle';
-  const urlToggleAll = 'http://localhost:5000/todos.toggleall';
+const urlGet = 'http://localhost:5000/todos.get';
+const urlAdd = 'http://localhost:5000/todos.add';
+const urlToggle = 'http://localhost:5000/todos.toggle';
+const urlToggleAll = 'http://localhost:5000/todos.toggleall';
 
- export async function sendNewTodo(todo) {
+export function fetchGetState() {
+  return fetch(urlGet, {'method': 'GET'});
+}
+
+ export async function fetchNewTodo(todo) {
+  let response = '';
   try {
-    const response = await fetch(urlAdd, {
+    response = await fetch(urlAdd, {
       'method': 'POST',
       'headers': {
         'Accept': 'application/json',
@@ -16,11 +22,14 @@
   } catch (exception) {
     console.log(`Error: ${exception}`);
   }
+
+  return response;
 }
 
-export async function sendToggleTodo(id, completed) {
+export async function fetchToggleTodo(id, completed) {
+  let response = '';
   try {
-    const response = await fetch(urlToggle, {
+    response = await fetch(urlToggle, {
       'method': 'PUT',
       'headers': {
         'Accept': 'application/json',
@@ -35,11 +44,14 @@ export async function sendToggleTodo(id, completed) {
   } catch (exception) {
     console.log(`Error: ${exception}`);
   }
+
+  return response;
 }
 
-export async function sendToggleAll(completed) {
+export async function fetchToggleAll(completed) {
+  let response = '';
   try {
-    const response = await fetch(urlToggleAll, {
+    response = await fetch(urlToggleAll, {
       'method': 'PUT',
       'headers': {
         'Accept': 'application/json',
@@ -51,4 +63,6 @@ export async function sendToggleAll(completed) {
   } catch (exception) {
     console.log(`Error: ${exception}`);
   }
+
+  return response;
 }

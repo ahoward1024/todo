@@ -13,7 +13,6 @@ collection = db[constants.MONGO_DB_COLLECTION]
 def get_todos():
     todos = []
     for todo in collection.find():
-        del todo['_id']
         todos += [todo]
     return todos
 
@@ -33,7 +32,17 @@ def toggle_todo(dict):
 
 def toggle_todo_all(dict):
     completed = dict['completed']
+    ret = collection.update_one(
+        {'_id': 'checkall'}, {'$set': {'checkall': completed}})
+    if(ret.matched_count == 0):
+        collection.insert_one({'_id': 'checkall', 'checkall': completed})
     collection.update_many({}, {'$set': {'todo.completed': completed}})
+
+
+def set_checkall(dict):
+    id = 'checkall'
+    checkall = dict['checkall']
+    collection.update_one({'_id': id}, {'$set': {'checkall': checkall}})
 
 
 def drop_db():

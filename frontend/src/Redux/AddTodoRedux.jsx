@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {addTodo} from './ActionsRedux';
+import {requestAddTodo} from './ActionsRedux';
 
 function AddTodoRedux({dispatch}) {
   let input = '';
@@ -13,7 +13,7 @@ function AddTodoRedux({dispatch}) {
         if (!input.value.trim()) {
           return;
         }
-        dispatch(addTodo(input.value));
+        dispatch(requestAddTodo(input.value));
         input.value = '';
       }}>
         <input

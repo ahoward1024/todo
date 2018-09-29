@@ -1,22 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {toggleAll} from './ActionsRedux';
+import {requestToggleAll} from './ActionsRedux';
 
 function mapStateToProps(state) {
-  return {'checked': state.checkall};
+  return {'completed': state.checkall};
 }
 
-function CheckAllRedux({dispatch, checked}) {
+function CheckAllRedux({dispatch, completed}) {
   return (
     <div className="CheckboxCheckAll">
       <input
         type="checkbox"
-        checked={checked}
-        onChange={() => {
-            dispatch(toggleAll());
-          }
-        }
+        checked={completed}
+        onChange={() => dispatch(requestToggleAll(!completed))}
       >
       </input>
       <label>
@@ -28,7 +25,7 @@ function CheckAllRedux({dispatch, checked}) {
 
 CheckAllRedux.propTypes = {
   'dispatch': PropTypes.func.isRequired,
-  'checked': PropTypes.bool.isRequired
+  'completed': PropTypes.bool.isRequired
 };
 
 export default connect(mapStateToProps)(CheckAllRedux);
