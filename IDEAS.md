@@ -2,6 +2,6 @@
 
 | APP  | DATABASE    | BACKEND    | FRONTEND | STATE STORE | CI       |DEPLOYMENT |
 | :--- | :---        | :---       | :---     |:---         | :---     |:---       |
-| Todo | MongoDB     | Flask      | React    | Redux       | TravisCI |Heroku     |
+|      | ✅ MongoDB  | ✅ Flask  | ✅ React | ✅ Redux   | TravisCI | Heroku    |
 | ???  | DynamoDB    | Dropwizard | Angular  | MobX        | CircleCI |AWS EC2    |
 | ???  | PostgreSQL  | NodeJS     | VueJS    | Flux        | CircleCI |Heroku     |
