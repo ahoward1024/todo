@@ -2,7 +2,7 @@
 # we want to build using the minimal package which includes NodeJS and Python
 # as well as Docker. We can try to spin up two Docker environments to build and
 # and test both the JS and Python code in parallel.
-language: minimal
+language: generic
 sudo: required
 jobs:
   include:
