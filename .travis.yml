@@ -3,13 +3,14 @@
 # as well as Docker. We can try to spin up two Docker environments to build and
 # and test both the JS and Python code in parallel.
 language: minimal
+sudo: required
 jobs:
   include:
     - stage: Backend
       name: "Install and Lint Backend"
       script:
         - cd backend
-        - pip install pipenv
+        - sudo pip3 install pipenv -qq
         - pipenv install
         - flake8
     - stage: Frontend
