@@ -2,20 +2,22 @@
 # we want to build using the minimal package which includes NodeJS and Python
 # as well as Docker. We can try to spin up two Docker environments to build and
 # and test both the JS and Python code in parallel.
-language: generic
-sudo: required
-jobs:
+matrix:
   include:
-    - stage: Backend
-      name: "Install and Lint Backend"
-      script:
+    - language: python
+      python: 3.6
+      before_script:
         - cd backend
-        - sudo pip3 install pipenv -qq
+      script:
+        - pip install pipenv
         - pipenv install
         - flake8
-    - stage: Frontend
-      name: "Install and Lint Frontend"
-      script:
+
+    - language: node_js
+      node_js:
+        - "node"
+      before_script:
         - cd frontend
+      script:
         - npm install
         - eslint src\
