@@ -5,17 +5,16 @@
 language: minimal
 jobs:
   include:
-    - stage: install-backend
+    - stage: Backend
+      name: "Install and Lint Backend"
       script:
         - cd backend
+        - pip install pipenv
         - pipenv install
-    - stage: lint-backend
-      script:
         - flake8
-    - stage: install-frontend
+    - stage: Frontend
+      name: "Install and Lint Frontend"
       script:
         - cd frontend
         - npm install
-    - stage: lint-frontend
-      script:
-        - eslint
+        - eslint src\
