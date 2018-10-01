@@ -21,3 +21,4 @@ matrix:
       script:
         - npm install
         - eslint src\
+        - npm build
