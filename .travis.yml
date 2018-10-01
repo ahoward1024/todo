@@ -1,0 +1,17 @@
+# Travis-CI is really not suited to using multiple languages at this time so
+# we want to build using the minimal package which includes NodeJS and Python
+# as well as Docker. We can try to spin up two Docker environments to build and
+# and test both the JS and Python code in parallel.
+language: minimal
+sudo: required
+services: docker
+jobs:
+  include:
+    - stage: install-backend
+      script:
+        - cd backend
+        - pipenv install
+    - stage: install-frontend
+      script:
+        - cd frontend
+        - npm install
