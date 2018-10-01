@@ -3,8 +3,6 @@
 # as well as Docker. We can try to spin up two Docker environments to build and
 # and test both the JS and Python code in parallel.
 language: minimal
-sudo: required
-services: docker
 jobs:
   include:
     - stage: install-backend
