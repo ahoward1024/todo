@@ -11,7 +11,13 @@ jobs:
       script:
         - cd backend
         - pipenv install
+    - stage: lint-backend
+      script:
+        - flake8
     - stage: install-frontend
       script:
         - cd frontend
         - npm install
+    - stage: lint-frontend
+      script:
+        - eslint
